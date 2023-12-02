@@ -1,0 +1,26 @@
+#! /usr/bin/env python3
+
+with open('Day2-input.txt', 'r') as f:
+    lines = [_.rstrip() for _ in f]
+
+rules = {'red': 12, 'green': 13, 'blue': 14}
+
+p1-total = 0
+
+for line in lines:
+    game = int(line.split(':')[0].split(' ')[1])
+    valid = True
+    for set_of_cubes in line.split(':')[1].split(';'):
+        for cubes in set_of_cubes.split(','):
+            cubes = cubes.lstrip().rstrip()
+            qty = int(cubes.split(' ')[0])
+            colour = cubes.split(' ')[1]
+            if qty > rules[colour]:
+                valid = False
+    if valid != False:
+        p1-total += game
+print('Part One - ', p1-total)
+
+
+
+
